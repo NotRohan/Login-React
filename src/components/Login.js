@@ -25,8 +25,21 @@ class Login extends Component {
 
 	displayLogin(e) {
 		e.preventDefault();
-		console.log('You are logged in');
-		console.log(this.state);
+		let users = localStorage.getItem("users");
+		let email = this.state.email;
+		let password = this.state.password;
+		if (users) {
+			let check = JSON.parse(users).find((item) => {
+				return ((item.user === email) && (item.pass === password));
+			})
+			if(check) {
+				alert('Login Successful');
+			} else {
+				alert('Email | Password not found');
+			}
+		} else {
+			alert('Email | Password not found');
+		}
 		this.setState({
 			email: '',
 			password: ''
@@ -61,7 +74,7 @@ class Login extends Component {
 					<input type="submit" value="Login" />
 				</form>
 
-				<Link to="/register">Create an account</Link>
+				<Link to="/register"><p className="linkk">Create an account</p></Link>
 			</div>
 		);
 	}

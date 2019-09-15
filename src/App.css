@@ -19,13 +19,24 @@ body {
 
 .login h2,
 .register h2 {
-  font-size: 45px;
+  font-size: 30px;
   text-transform: uppercase;
-  text-align: center;
+  text-align: left;
+  color: white;
 }
 
 .login a {
   text-align: center;
+}
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+
+.linkk {
+  color: white;
+  letter-spacing: 2px;
 }
 
 input[type='text'] {

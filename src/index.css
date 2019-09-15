@@ -2,4 +2,14 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: blueviolet;
+}
+
+.container-title {
+  font-size: 50px;
+  position: fixed;
+  top: 30px;
+  margin: 10px;
+  font-family: sans-serif;
+  text-transform: uppercase;
 }

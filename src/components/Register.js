@@ -26,8 +26,25 @@ class Register extends Component {
 
 	displayLogin(e) {
 		e.preventDefault();
-		console.log('You have successfully registered');
-		console.log(this.state);
+		let users = localStorage.getItem("users");
+		if (users) {
+			let newArr = [...JSON.parse(users)];
+			let email = this.state.email;
+			let check = newArr.find((item) => {
+				return item.user === email;
+			})
+			if (check) {
+				alert("This Email is Already Registered");
+				return;
+			}
+			newArr.push({user:this.state.email, pass: this.state.password});
+			localStorage.setItem("users",JSON.stringify(newArr));
+			alert("You have successfully registered");
+		} else {
+			let newArr = [{user:this.state.email, pass: this.state.password}];
+			localStorage.setItem("users",JSON.stringify(newArr));
+			alert("You have successfully registered");
+		}
 		this.setState({
 			fullname: '',
 			email: '',
@@ -70,15 +87,10 @@ class Register extends Component {
 							onChange={this.update}
 						/>
 					</div>
-
-					<div className="password">
-						<input type="password" placeholder="Confirm Password" name="password1" />
-					</div>
-
 					<input type="submit" value="Login" />
 				</form>
 
-				<Link to="/">Login Here</Link>
+				<Link to="/"><p className="linkk">Login Here</p></Link>
 			</div>
 		);
 	}
